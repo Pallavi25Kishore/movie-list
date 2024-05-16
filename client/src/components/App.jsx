@@ -1,17 +1,18 @@
 import React from 'react';
-import exampleMovies from './exampledata.js';
+
 import MovieList from './MovieList.jsx';
 import Search from './Search.jsx';
 
-const App = (props) => {
+const App = ({movies}) => {
 
-  const [movieList, setMoviewList] = React.useState(exampleMovies);
+  const [searchText, setSearchText] = React.useState('');
+
   return (
     <div>
       <nav className="header">MovieList</nav>
       <hr></hr>
-      <Search/>
-      <MovieList movies={movieList}/>
+      <Search searchText={searchText} onSearchTextChange={setSearchText} />
+      <MovieList movies={movies} searchText={searchText}/>
     </div>
   );
 };
