@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Watched = ({movies}) => {
+const Watched = ({setWatchStatusTab}) => {
 return (
-<button>Watched</button>
+<button onClick={()=> {setWatchStatusTab('filterWatched')}}>Watched</button>
 );
 };
 

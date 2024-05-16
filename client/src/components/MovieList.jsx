@@ -2,18 +2,18 @@ import React from 'react';
 import Movie from './Movie.jsx';
 
 //MovieList component
-const MovieList = ({movies, searchText, setMovies}) => {
-if (searchText === '') {
+const MovieList = ({filteredmovies, movies, searchText, setMovies}) => {
+  if (searchText === '') { // to filter search
   return (
     <div className="movie-list">
       {
-      movies.map((movie, index) => (<Movie movie={movie} setMovies={setMovies} movies={movies} key={index}/>))
+      filteredmovies.map((movie, index) => (<Movie movie={movie} setMovies={setMovies} movies={movies} key={index}/>))
       }
     </div>
   )
-} else {
+} else { //to filter search
 var wordsArr = searchText.toLowerCase().split(' ');
-var filteredArr = movies.filter((movie) => {
+var filteredArr = filteredmovies.filter((movie) => {
     var movieNameArr = movie.title.toLowerCase().split(' ');
     var counter = 0;
     for (var i = 0; i < wordsArr.length; i++) {

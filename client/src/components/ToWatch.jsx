@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ToWatch = ({movies}) => {
+const ToWatch = ({setWatchStatusTab}) => {
   return (
-    <button>To Watch</button>
+    <button onClick={()=> {setWatchStatusTab('filterToWatch')}}>To Watch</button>
     );
 };
 
