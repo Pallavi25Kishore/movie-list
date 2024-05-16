@@ -2,9 +2,7 @@ import React from 'react';
 
 const Search = ({searchText, onSearchTextChange}) => {
 
-  console.log(searchText);
-
-  const handleSubmit = (e) => {
+  const handleSubmitSearch = (e) => {
     e.preventDefault();
     var formData = new FormData(e.target);
     var formJson = Object.fromEntries(formData.entries());
@@ -13,7 +11,7 @@ const Search = ({searchText, onSearchTextChange}) => {
   };
 
   return (
-    <form className="search-bar" method="post" onSubmit={handleSubmit}>
+    <form className="search-bar" method="post" onSubmit={handleSubmitSearch}>
       <input
       type="text"
       name = "searchtext"
