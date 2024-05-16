@@ -7,6 +7,11 @@ const AddMovies = ({movies, setMovies}) => {
     var formData = new FormData(e.target);
     var formJson = Object.fromEntries(formData.entries());
     var addName = formJson.addname;
+    for (var obj of movies){
+      if (obj['title'] === addName) {
+        return;
+      }
+    }
     setMovies([...movies, {title: addName}]);
   };
 
