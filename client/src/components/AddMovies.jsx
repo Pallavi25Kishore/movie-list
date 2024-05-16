@@ -12,7 +12,7 @@ const AddMovies = ({movies, setMovies}) => {
         return;
       }
     }
-    setMovies([...movies, {title: addName}]);
+    setMovies([...movies, {title: addName, watched: false, id: addName} ]);
   };
 
   return (
