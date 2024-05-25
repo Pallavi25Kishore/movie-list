@@ -23,12 +23,41 @@ const App = () => {
   }, []);
 
 
-  var handleWatchedTab = function () {
+  const handleWatchedTab = function () {
     setWatchStatusTab('filterWatched');
   };
 
-  var handleToWatchTab = function () {
+  const handleToWatchTab = function () {
     setWatchStatusTab('filterToWatch');
+  };
+
+  const handleToggle = (movie) => {
+    /*var newObj; // to create new object with updated watched
+    if (movie.watched === false) {
+      newObj = {title: movie.title, watched: true, id: movie.id};
+      display = 'WATCHED';
+    } else if (movie.watched === true) {
+      newObj = {title: movie.title, watched: false, id: movie.id};
+      display = 'TO WATCH';
+    }
+    var newArr = movies.map((item) => { // creating new array of new objects
+      if (item.id !== movie.title) {
+      return {...item}; // creating new objects with same properties
+    } else if (item.id === movie.id) {
+      return newObj; // creating new object with updated watched property
+    }
+    });
+    setMovies(newArr);*/
+    axios.patch(`/api/movies/${movie.id}`)
+    .then ((response) => {
+      axios.get('/api/movies')
+      .then((response) => {
+        setMovies(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    })
   };
 
   return (
@@ -39,7 +68,7 @@ const App = () => {
       <Watched handleWatchedTab={handleWatchedTab}/>
       <ToWatch handleToWatchTab={handleToWatchTab}/>
       <Search setSearchText={setSearchText} />
-      <FilteredMovies movies={movies} searchText={searchText} setMovies={setMovies} watchStatusTab={watchStatusTab}/>
+      <FilteredMovies movies={movies} searchText={searchText} handleToggle={handleToggle} watchStatusTab={watchStatusTab}/>
     </div>
   );
 };

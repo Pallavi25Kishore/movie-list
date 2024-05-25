@@ -1,32 +1,30 @@
 import React from 'react';
 import MovieList from './MovieList.jsx';
 
-const FilteredMovies = ({movies, searchText, setMovies, watchStatusTab}) => {
+const FilteredMovies = ({movies, searchText, handleToggle, watchStatusTab}) => {
   var filteredArr;
   if(watchStatusTab === 'filterWatched') {
     filteredArr = movies.filter((item) => {
-      if(item.watched === true) {
+      if(item.watched === 1) {
         return true;
       }
     });
-    console.log('hi', filteredArr);
     return (
-      <MovieList filteredmovies={filteredArr} movies={movies} searchText={searchText} setMovies={setMovies} />
+      <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} />
     )
   } else if (watchStatusTab === 'filterToWatch') {
       filteredArr = movies.filter((item) => {
-        if(item.watched === false) {
+        if(item.watched === 0) {
           return true;
         }
       });
-      console.log('bye', filteredArr);
       return (
-        <MovieList filteredmovies={filteredArr} movies={movies} searchText={searchText} setMovies={setMovies} />
+        <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} />
       )
 
   } else {
     return (
-      <MovieList filteredmovies={movies} movies={movies} searchText={searchText} setMovies={setMovies} />
+      <MovieList filteredmovies={movies}  searchText={searchText} handleToggle={handleToggle} />
     )
   }
 };

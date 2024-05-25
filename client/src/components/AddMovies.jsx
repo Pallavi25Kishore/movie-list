@@ -33,6 +33,9 @@ const AddMovies = ({movies, setMovies}) => {
         console.log('get', response);
         setMovies(response.data);
       })
+      .catch((error) => {
+        console.log(error);
+      })
     })
     setValue('');
   };
