@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ToWatch = ({setWatchStatusTab}) => {
+const ToWatch = ({handleToWatchTab}) => {
   return (
-    <button onClick={()=> {setWatchStatusTab('filterToWatch')}}>To Watch</button>
+    <button onClick={handleToWatchTab}>To Watch</button>
     );
 };
 

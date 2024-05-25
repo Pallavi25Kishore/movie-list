@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Watched = ({setWatchStatusTab}) => {
-return (
-<button onClick={()=> {setWatchStatusTab('filterWatched')}}>Watched</button>
-);
+const Watched = ({handleWatchedTab}) => {
+  return (
+  <button onClick={handleWatchedTab}>Watched</button>
+  );
 };
 
 export default Watched;

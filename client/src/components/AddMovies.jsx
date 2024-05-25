@@ -1,8 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
+import axios from 'axios';
 
 const AddMovies = ({movies, setMovies}) => {
 
-  const handleSubmitAdd = (e) => {
+  const [value, setValue] = useState('');
+
+  /*const handleSubmitAdd = (e) => {
     e.preventDefault();
     var formData = new FormData(e.target);
     var formJson = Object.fromEntries(formData.entries());
@@ -13,17 +16,37 @@ const AddMovies = ({movies, setMovies}) => {
       }
     }
     setMovies([...movies, {title: addName, watched: false, id: addName} ]);
+  };*/
+
+  const handleChange = (event) => {
+    event.preventDefault();
+    setValue(event.target.value);
+  };
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    axios.post('/api/movies', {title: value})
+    .then((response) => {
+      console.log('postresponse', response);
+      axios.get('/api/movies')
+      .then ((response) => {
+        console.log('get', response);
+        setMovies(response.data);
+      })
+    })
+    setValue('');
   };
 
   return (
-    <form className="add" method="post" onSubmit={handleSubmitAdd}>
+    <form className="add">
       <input
+      onChange={handleChange}
+      value={value}
       placeholder="Add movie title here"
       type="text"
       name="addname"
       className="add-movie"></input>
-        <button
-        type="submit">Add</button>
+        <button onClick={handleClick}>Add</button>
     </form>
   );
 };
