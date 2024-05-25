@@ -35,7 +35,7 @@ if (filteredArr.length !== 0) {
   )
 } else if (filteredArr.length === 0) {
   return (
-  <div> Sorry, there are no results available for this search!</div>
+  <div className="no-movies"> Sorry, there are no results available for this search!</div>
 )}
 }
   };
