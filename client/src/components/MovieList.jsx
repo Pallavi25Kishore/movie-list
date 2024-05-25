@@ -2,7 +2,7 @@ import React from 'react';
 import Movie from './Movie.jsx';
 
 //MovieList component
-const MovieList = ({filteredmovies, movies, searchText, handleToggle}) => {
+const MovieList = ({filteredmovies, searchText, handleToggle}) => {
   if (searchText === '') { // to filter search
   return (
     <div className="movie-list">
