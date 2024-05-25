@@ -12,6 +12,7 @@ const App = () => {
   const [movies, setMovies]= useState([]);
   const [watchStatusTab, setWatchStatusTab] = useState('');
 
+
   useEffect(() => {
     axios.get('/api/movies')
     .then((response) => {
@@ -48,7 +49,20 @@ const App = () => {
     }
     });
     setMovies(newArr);*/
-    axios.patch(`/api/movies/${movie.id}`)
+    axios.patch(`/api/movies/watched/${movie.id}`)
+    .then ((response) => {
+      axios.get('/api/movies')
+      .then((response) => {
+        setMovies(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    })
+  };
+
+  const handleMovieNameClick = (movie) => {
+    axios.patch(`/api/movies/info/${movie.id}`)
     .then ((response) => {
       axios.get('/api/movies')
       .then((response) => {
@@ -68,7 +82,7 @@ const App = () => {
       <Watched handleWatchedTab={handleWatchedTab}/>
       <ToWatch handleToWatchTab={handleToWatchTab}/>
       <Search setSearchText={setSearchText} />
-      <FilteredMovies movies={movies} searchText={searchText} handleToggle={handleToggle} watchStatusTab={watchStatusTab}/>
+      <FilteredMovies movies={movies} searchText={searchText} handleToggle={handleToggle} watchStatusTab={watchStatusTab} handleMovieNameClick={handleMovieNameClick} />
     </div>
   );
 };

@@ -2,12 +2,12 @@ import React from 'react';
 import Movie from './Movie.jsx';
 
 //MovieList component
-const MovieList = ({filteredmovies, searchText, handleToggle}) => {
+const MovieList = ({filteredmovies, searchText, handleToggle, handleMovieNameClick}) => {
   if (searchText === '') { // to filter search
   return (
     <div className="movie-list">
       {
-      filteredmovies.map((movie, index) => (<Movie movie={movie} handleToggle={handleToggle} key={movie.id}/>))
+      filteredmovies.map((movie, index) => (<Movie movie={movie} handleToggle={handleToggle} handleMovieNameClick={handleMovieNameClick} key={movie.id}/>))
       }
     </div>
   )
@@ -29,7 +29,7 @@ if (filteredArr.length !== 0) {
   return (
   <div className="movie-list">
     {
-    filteredArr.map((movie, index) => (<Movie movie={movie} handleToggle={handleToggle} key={movie.id}/>))
+    filteredArr.map((movie, index) => (<Movie movie={movie} handleToggle={handleToggle} handleMovieNameClick={handleMovieNameClick} key={movie.id}/>))
     }
     </div>
   )

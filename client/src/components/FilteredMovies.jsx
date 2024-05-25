@@ -1,7 +1,7 @@
 import React from 'react';
 import MovieList from './MovieList.jsx';
 
-const FilteredMovies = ({movies, searchText, handleToggle, watchStatusTab}) => {
+const FilteredMovies = ({movies, searchText, handleToggle, watchStatusTab, handleMovieNameClick}) => {
   var filteredArr;
   if(watchStatusTab === 'filterWatched') {
     filteredArr = movies.filter((item) => {
@@ -10,7 +10,7 @@ const FilteredMovies = ({movies, searchText, handleToggle, watchStatusTab}) => {
       }
     });
     return (
-      <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} />
+      <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} handleMovieNameClick={handleMovieNameClick} />
     )
   } else if (watchStatusTab === 'filterToWatch') {
       filteredArr = movies.filter((item) => {
@@ -19,12 +19,12 @@ const FilteredMovies = ({movies, searchText, handleToggle, watchStatusTab}) => {
         }
       });
       return (
-        <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} />
+        <MovieList filteredmovies={filteredArr} searchText={searchText} handleToggle={handleToggle} handleMovieNameClick={handleMovieNameClick} />
       )
 
   } else {
     return (
-      <MovieList filteredmovies={movies}  searchText={searchText} handleToggle={handleToggle} />
+      <MovieList filteredmovies={movies}  searchText={searchText} handleToggle={handleToggle} handleMovieNameClick={handleMovieNameClick}/>
     )
   }
 };

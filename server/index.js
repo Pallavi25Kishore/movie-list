@@ -28,9 +28,9 @@ app.post('/api/movies', (req, res) => {
   });
 });
 
-app.patch('/api/movies/:id', (req, res) => {
+app.patch('/api/movies/watched/:id', (req, res) => {
   var params = [Number(req.params.id)]; // req.params object will contain key id and value "4" for eg.
-  movies.update(params, (err, result) => {
+  movies.updatewatched(params, (err, result) => {
     if (err) {
       res.sendStatus(400);
     } else {
@@ -39,7 +39,16 @@ app.patch('/api/movies/:id', (req, res) => {
   });
 });
 
-
+app.patch('/api/movies/info/:id', (req, res) => {
+  var params = [Number(req.params.id)];
+  movies.updateinfo(params, (err, result) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      res.sendStatus(200);
+    }
+  });
+});
 
 
 
